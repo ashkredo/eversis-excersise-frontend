@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import NotFoundImage from 'assets/images/not-found-page.jpg';
 
 const NotFound = styled.div`
@@ -54,9 +54,9 @@ export default () => {
       <div className="content">
         <h1 className="title">404</h1>
         <p className="subtitle">Page Not Found</p>
-        <Link to="/" className="btn">
+        <NavLink to="/" className="btn">
           RETURN HOME
-        </Link>
+        </NavLink>
       </div>
     </NotFound>
   );
