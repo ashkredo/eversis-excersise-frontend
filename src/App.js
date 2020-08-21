@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from 'screens/pages/Home';
+import NotFound from 'screens/pages/NotFound';
 
 const App = () => {
   return (
@@ -8,7 +9,7 @@ const App = () => {
       <Switch>
         <Route path="/" exact render={() => <Home />} />
         <Route path="/home" exact render={() => <Home />} />
-        <Route render={() => <h1>NotFound</h1>} />
+        <Route render={() => <NotFound />} />
       </Switch>
     </div>
   );
