@@ -4,6 +4,7 @@ import { compose } from 'redux';
 import { connect, Provider } from 'react-redux';
 import { initializeApp } from 'redux/reducers/appReducer';
 import store from 'redux/helpers/store';
+import Preloader from 'screens/components/common/Preloader';
 import Home from 'screens/pages/Home';
 import NotFound from 'screens/pages/NotFound';
 
@@ -11,7 +12,7 @@ const App = (props) => {
   useEffect(() => {
     if (!props.initialized) props.initializeApp();
   });
-  if (!props.initialized) return <h1>Preloader</h1>;
+  if (!props.initialized) return <Preloader />;
   return (
     <div className="App">
       <Switch>
