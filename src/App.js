@@ -5,8 +5,10 @@ import { connect, Provider } from 'react-redux';
 import { initializeApp } from 'redux/reducers/appReducer';
 import store from 'redux/helpers/store';
 import Preloader from 'screens/components/common/Preloader';
+import Header from 'screens/components/Header';
 import Home from 'screens/pages/Home';
 import NotFound from 'screens/pages/NotFound';
+import Container from 'react-bootstrap/Container';
 
 const App = (props) => {
   useEffect(() => {
@@ -14,13 +16,31 @@ const App = (props) => {
   });
   if (!props.initialized) return <Preloader />;
   return (
-    <div className="App">
+    <Container className="App" fluid="false">
       <Switch>
-        <Route path="/" exact render={() => <Home />} />
-        <Route path="/home" exact render={() => <Home />} />
+        <Route
+          path="/"
+          exact
+          render={() => (
+            <>
+              <Header />
+              <Home />
+            </>
+          )}
+        />
+        <Route
+          path="/home"
+          exact
+          render={() => (
+            <>
+              <Header />
+              <Home />
+            </>
+          )}
+        />
         <Route render={() => <NotFound />} />
       </Switch>
-    </div>
+    </Container>
   );
 };
 
