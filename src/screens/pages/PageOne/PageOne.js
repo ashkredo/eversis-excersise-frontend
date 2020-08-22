@@ -32,21 +32,43 @@ const PageOne = ({ user, updateUserData, ...props }) => {
 
   useEffect(() => {
     if (startedAddingName) {
-      setNameError(true);
+      if (!/[a-zA-Z]+/ + /[0-9]/.test(name) || !name) {
+        setNameError(true);
+      } else {
+        setNameError(false);
+      }
     }
     if (startedAddingSurname) {
-      setSurnameError(true);
+      if (!/[a-zA-Z]+/ + /[0-9]/.test(surname) || !surname) {
+        setSurnameError(true);
+      } else {
+        setSurnameError(false);
+      }
     }
     if (startedAddingAge) {
-      setAgeError(true);
+      if (!/[0-9]/ + /[a-zA-Z]+/.test(age) || !age) {
+        setAgeError(true);
+      } else {
+        setAgeError(false);
+      }
     }
-  }, [startedAddingName, startedAddingSurname, startedAddingAge]);
+  }, [
+    startedAddingName,
+    startedAddingSurname,
+    startedAddingAge,
+    name,
+    surname,
+    age,
+  ]);
 
   const handleSubmit = () => {
-    if (name && surname && age) {
+    if (name && surname && age && !nameError && !surnameError && !ageError) {
       updateUserData({ name, surname, age });
       props.history.push('pagetwo');
     }
+    setStartedAddingName(true);
+    setStartedAddingSurname(true);
+    setStartedAddingAge(true);
   };
 
   return (
@@ -85,7 +107,7 @@ const PageOne = ({ user, updateUserData, ...props }) => {
                 color: '#fff',
               }}
             >
-              Error
+              Invalid character !
             </Col>
           ) : (
             <Col className="col-3 mt-5 m-4 py-2 text-center" />
@@ -118,7 +140,7 @@ const PageOne = ({ user, updateUserData, ...props }) => {
                 color: '#fff',
               }}
             >
-              Error
+              Invalid character !
             </Col>
           ) : (
             <Col className="col-3 mt-5 m-4 py-2 text-center" />
@@ -149,7 +171,7 @@ const PageOne = ({ user, updateUserData, ...props }) => {
                 color: '#fff',
               }}
             >
-              Error
+              Invalid character !
             </Col>
           ) : (
             <Col className="col-3 mt-5 m-4 py-2 text-center" />
@@ -159,7 +181,11 @@ const PageOne = ({ user, updateUserData, ...props }) => {
         <Row className="row">
           <Col className="col-12 d-flex text-center">
             <Col className="bluecolumn col-11 py-4 m-4">
-              {name && surname && `Hello ${name} ${surname} !`}
+              {name &&
+                surname &&
+                !nameError &&
+                !surnameError &&
+                `Hello ${name} ${surname} !`}
             </Col>
           </Col>
         </Row>
