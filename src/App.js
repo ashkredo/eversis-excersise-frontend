@@ -10,6 +10,7 @@ import Header from 'screens/components/Header';
 import Home from 'screens/pages/Home';
 import NotFound from 'screens/pages/NotFound';
 import PageOne from 'screens/pages/PageOne';
+import PageTwo from 'screens/pages/PageTwo';
 
 const App = (props) => {
   useEffect(() => {
@@ -46,6 +47,16 @@ const App = (props) => {
             <>
               <Header />
               <PageOne />
+            </>
+          )}
+        />
+        <Route
+          path="/pagetwo"
+          exact
+          render={() => (
+            <>
+              <Header />
+              <PageTwo />
             </>
           )}
         />

@@ -28,9 +28,9 @@ const PageOne = (props) => {
 
       <Row className="row">
         <Col className="col-12 d-flex text-center">
-          <div className="bluecolumn col-11 py-4 m-4">
+          <Col className="bluecolumn col-11 py-4 m-4">
             Hello $name $surname !
-          </div>
+          </Col>
         </Col>
       </Row>
 
