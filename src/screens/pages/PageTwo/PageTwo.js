@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Header from 'screens/components/Header';
 import Row from 'react-bootstrap/Row';
@@ -17,6 +17,19 @@ const Page = styled.div`
 `;
 
 const PageTwo = ({ user }) => {
+  const [haveAccess, setHaveAccess] = useState(false);
+  const [haveNoAccess, setHaveNoAccess] = useState(false);
+
+  const handleSubmit = () => {
+    if (user.age < 18) {
+      setHaveNoAccess(true);
+      setHaveAccess(false);
+    } else {
+      setHaveAccess(true);
+      setHaveNoAccess(false);
+    }
+  };
+
   return (
     <>
       <Header />
@@ -35,11 +48,57 @@ const PageTwo = ({ user }) => {
               variant="success"
               className="col-2 py-2 my-4"
               style={{ border: '2px solid #ffffff' }}
+              onClick={handleSubmit}
             >
               ACCESS
             </Button>
           </Col>
         </Row>
+
+        {haveNoAccess && (
+          <Row>
+            <Col className="col-12 d-flex text-center justify-content-center">
+              <Col
+                className="col-3 mt-5 m-4 py-2 text-center"
+                style={{
+                  backgroundColor: 'red',
+                  border: '2px solid #ffffff',
+                  color: '#fff',
+                }}
+              >
+                You by at least 18 years old !
+              </Col>
+            </Col>
+          </Row>
+        )}
+
+        {haveAccess && (
+          <Row>
+            <Col className="col-12 d-flex justify-content-center text-center">
+              <div
+                style={{
+                  width: '500px',
+                  height: '500px',
+                  border: '2px solid #ffffff',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <img
+                  src="https://www.pandasecurity.com/mediacenter/src/uploads/2019/07/pandasecurity-How-do-hackers-pick-their-targets.jpg"
+                  alt="Hacker"
+                  style={{
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                  }}
+                />
+              </div>
+            </Col>
+          </Row>
+        )}
       </Page>
     </>
   );

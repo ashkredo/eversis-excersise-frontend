@@ -35,12 +35,20 @@ const PageOne = ({ user }) => {
           </Col>
           <input
             className="col-3 mt-5 m-4 py-2 text-center"
-            style={{ backgroundColor: 'gray', border: '2px solid #ffffff' }}
+            style={{
+              backgroundColor: 'gray',
+              border: '2px solid #ffffff',
+              color: '#fff',
+            }}
             value={user.name}
-           />
+          />
           <Col
             className="col-3 mt-5 m-4 py-2 text-center"
-            style={{ backgroundColor: 'red', border: '2px solid #ffffff' }}
+            style={{
+              backgroundColor: 'red',
+              border: '2px solid #ffffff',
+              color: '#fff',
+            }}
           >
             Error
           </Col>
@@ -52,12 +60,20 @@ const PageOne = ({ user }) => {
           </Col>
           <input
             className="col-3 mt-5 m-4 py-2 text-center"
-            style={{ backgroundColor: 'gray', border: '2px solid #ffffff' }}
+            style={{
+              backgroundColor: 'gray',
+              border: '2px solid #ffffff',
+              color: '#fff',
+            }}
             value={user.surname}
-           />
+          />
           <Col
             className="col-3 mt-5 m-4 py-2 text-center"
-            style={{ backgroundColor: 'red', border: '2px solid #ffffff' }}
+            style={{
+              backgroundColor: 'red',
+              border: '2px solid #ffffff',
+              color: '#fff',
+            }}
           >
             Error
           </Col>
@@ -67,12 +83,20 @@ const PageOne = ({ user }) => {
           <Col className="bluecolumn col-3 m-4 mt-5 py-2 text-center">Age:</Col>
           <input
             className="col-3 mt-5 m-4 py-2 text-center"
-            style={{ backgroundColor: 'gray', border: '2px solid #ffffff' }}
+            style={{
+              backgroundColor: 'gray',
+              border: '2px solid #ffffff',
+              color: '#fff',
+            }}
             value={user.age}
-           />
+          />
           <Col
             className="col-3 mt-5 m-4 py-2 text-center"
-            style={{ backgroundColor: 'red', border: '2px solid #ffffff' }}
+            style={{
+              backgroundColor: 'red',
+              border: '2px solid #ffffff',
+              color: '#fff',
+            }}
           >
             Error
           </Col>
