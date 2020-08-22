@@ -7,9 +7,9 @@ const SET_USER = 'eversis-excersise-frontend/userReducer/SET_USER';
 // InitialState
 const initialState = {
   user: {
-    name: 'Artur',
-    surname: 'Shkred',
-    age: 100,
+    name: null,
+    surname: null,
+    age: null,
   },
 };
 //------------

@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 import Header from 'screens/components/Header';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -18,7 +17,38 @@ const Page = styled.div`
   }
 `;
 
-const PageOne = ({ user }) => {
+const PageOne = ({ user, updateUserData, ...props }) => {
+  const [name, setName] = useState(user.name ? user.name : '');
+  const [surname, setSurname] = useState(user.surname ? user.surname : '');
+  const [age, setAge] = useState(user.age ? user.age : '');
+
+  const [startedAddingName, setStartedAddingName] = useState(false);
+  const [startedAddingSurname, setStartedAddingSurname] = useState(false);
+  const [startedAddingAge, setStartedAddingAge] = useState(false);
+
+  const [nameError, setNameError] = useState(false);
+  const [surnameError, setSurnameError] = useState(false);
+  const [ageError, setAgeError] = useState(false);
+
+  useEffect(() => {
+    if (startedAddingName) {
+      setNameError(true);
+    }
+    if (startedAddingSurname) {
+      setSurnameError(true);
+    }
+    if (startedAddingAge) {
+      setAgeError(true);
+    }
+  }, [startedAddingName, startedAddingSurname, startedAddingAge]);
+
+  const handleSubmit = () => {
+    if (name && surname && age) {
+      updateUserData({ name, surname, age });
+      props.history.push('pagetwo');
+    }
+  };
+
   return (
     <>
       <Header />
@@ -40,18 +70,26 @@ const PageOne = ({ user }) => {
               border: '2px solid #ffffff',
               color: '#fff',
             }}
-            value={user.name}
-          />
-          <Col
-            className="col-3 mt-5 m-4 py-2 text-center"
-            style={{
-              backgroundColor: 'red',
-              border: '2px solid #ffffff',
-              color: '#fff',
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+              if (!startedAddingName) setStartedAddingName(true);
             }}
-          >
-            Error
-          </Col>
+          />
+          {nameError ? (
+            <Col
+              className="col-3 mt-5 m-4 py-2 text-center"
+              style={{
+                backgroundColor: 'red',
+                border: '2px solid #ffffff',
+                color: '#fff',
+              }}
+            >
+              Error
+            </Col>
+          ) : (
+            <Col className="col-3 mt-5 m-4 py-2 text-center" />
+          )}
         </Row>
 
         <Row className="col-10 justify-content-between">
@@ -65,18 +103,26 @@ const PageOne = ({ user }) => {
               border: '2px solid #ffffff',
               color: '#fff',
             }}
-            value={user.surname}
-          />
-          <Col
-            className="col-3 mt-5 m-4 py-2 text-center"
-            style={{
-              backgroundColor: 'red',
-              border: '2px solid #ffffff',
-              color: '#fff',
+            value={surname}
+            onChange={(e) => {
+              setSurname(e.target.value);
+              if (!startedAddingSurname) setStartedAddingSurname(true);
             }}
-          >
-            Error
-          </Col>
+          />
+          {surnameError ? (
+            <Col
+              className="col-3 mt-5 m-4 py-2 text-center"
+              style={{
+                backgroundColor: 'red',
+                border: '2px solid #ffffff',
+                color: '#fff',
+              }}
+            >
+              Error
+            </Col>
+          ) : (
+            <Col className="col-3 mt-5 m-4 py-2 text-center" />
+          )}
         </Row>
 
         <Row className="col-10 justify-content-between">
@@ -88,39 +134,48 @@ const PageOne = ({ user }) => {
               border: '2px solid #ffffff',
               color: '#fff',
             }}
-            value={user.age}
-          />
-          <Col
-            className="col-3 mt-5 m-4 py-2 text-center"
-            style={{
-              backgroundColor: 'red',
-              border: '2px solid #ffffff',
-              color: '#fff',
+            value={age}
+            onChange={(e) => {
+              setAge(e.target.value);
+              if (!startedAddingAge) setStartedAddingAge(true);
             }}
-          >
-            Error
-          </Col>
+          />
+          {ageError ? (
+            <Col
+              className="col-3 mt-5 m-4 py-2 text-center"
+              style={{
+                backgroundColor: 'red',
+                border: '2px solid #ffffff',
+                color: '#fff',
+              }}
+            >
+              Error
+            </Col>
+          ) : (
+            <Col className="col-3 mt-5 m-4 py-2 text-center" />
+          )}
         </Row>
 
         <Row className="row">
           <Col className="col-12 d-flex text-center">
             <Col className="bluecolumn col-11 py-4 m-4">
-              {`Hello ${user.name} ${user.surname} !`}
+              {name && surname && `Hello ${name} ${surname} !`}
             </Col>
           </Col>
         </Row>
 
         <Row>
           <Col className="col-10 d-flex justify-content-center mt-3 mb-5">
-            <NavLink to="/pagetwo" className="col-3 mb-3">
+            <Col className="col-3 mb-3">
               <Button
                 variant="success"
                 className="col-12 h-100 py-2"
                 style={{ border: '2px solid #ffffff' }}
+                onClick={handleSubmit}
               >
                 Save
               </Button>
-            </NavLink>
+            </Col>
           </Col>
         </Row>
       </Page>
