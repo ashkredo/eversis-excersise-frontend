@@ -4,11 +4,12 @@ import { compose } from 'redux';
 import { connect, Provider } from 'react-redux';
 import { initializeApp } from 'redux/reducers/appReducer';
 import store from 'redux/helpers/store';
+import Container from 'react-bootstrap/Container';
 import Preloader from 'screens/components/common/Preloader';
 import Header from 'screens/components/Header';
 import Home from 'screens/pages/Home';
 import NotFound from 'screens/pages/NotFound';
-import Container from 'react-bootstrap/Container';
+import PageOne from 'screens/pages/PageOne';
 
 const App = (props) => {
   useEffect(() => {
@@ -35,6 +36,16 @@ const App = (props) => {
             <>
               <Header />
               <Home />
+            </>
+          )}
+        />
+        <Route
+          path="/pageone"
+          exact
+          render={() => (
+            <>
+              <Header />
+              <PageOne />
             </>
           )}
         />
