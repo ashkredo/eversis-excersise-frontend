@@ -20,3 +20,9 @@ export const appAPI = {
       });
   },
 };
+
+export const userAPI = {
+  updateUserData: () => {
+    // TODO
+  },
+};

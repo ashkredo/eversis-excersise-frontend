@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Header from 'screens/components/Header';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
@@ -12,19 +13,22 @@ const HomePage = styled.div`
 
 const Home = () => {
   return (
-    <HomePage>
-      <Row>
-        <Col className="col-12 d-flex align-items-center justify-content-center">
-          <Button
-            variant="primary"
-            className="col-6 py-4"
-            style={{ border: '2px solid #FFFFFF' }}
-          >
-            WELCOM TO REACT SPA!
-          </Button>
-        </Col>
-      </Row>
-    </HomePage>
+    <>
+      <Header />
+      <HomePage>
+        <Row>
+          <Col className="col-12 d-flex align-items-center justify-content-center">
+            <Button
+              variant="primary"
+              className="col-6 py-4"
+              style={{ border: '2px solid #FFFFFF' }}
+            >
+              WELCOM TO REACT SPA!
+            </Button>
+          </Col>
+        </Row>
+      </HomePage>
+    </>
   );
 };
 

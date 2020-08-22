@@ -6,11 +6,10 @@ import { initializeApp } from 'redux/reducers/appReducer';
 import store from 'redux/helpers/store';
 import Container from 'react-bootstrap/Container';
 import Preloader from 'screens/components/common/Preloader';
-import Header from 'screens/components/Header';
 import Home from 'screens/pages/Home';
 import NotFound from 'screens/pages/NotFound';
-import PageOne from 'screens/pages/PageOne';
-import PageTwo from 'screens/pages/PageTwo';
+import PageOneContainer from 'screens/pages/PageOne/PageOneContainer';
+import PageTwoContainer from 'screens/pages/PageTwo/PageTwoContainer';
 
 const App = (props) => {
   useEffect(() => {
@@ -20,46 +19,10 @@ const App = (props) => {
   return (
     <Container className="App" fluid="false">
       <Switch>
-        <Route
-          path="/"
-          exact
-          render={() => (
-            <>
-              <Header />
-              <Home />
-            </>
-          )}
-        />
-        <Route
-          path="/home"
-          exact
-          render={() => (
-            <>
-              <Header />
-              <Home />
-            </>
-          )}
-        />
-        <Route
-          path="/pageone"
-          exact
-          render={() => (
-            <>
-              <Header />
-              <PageOne />
-            </>
-          )}
-        />
-        <Route
-          path="/pagetwo"
-          exact
-          render={() => (
-            <>
-              <Header />
-              <PageTwo />
-            </>
-          )}
-        />
+        <Route path="/" exact render={() => <Home />} />
+        <Route path="/home" exact render={() => <Home />} />
+        <Route path="/pageone" exact render={() => <PageOneContainer />} />
+        <Route path="/pagetwo" exact render={() => <PageTwoContainer />} />
         <Route render={() => <NotFound />} />
       </Switch>
     </Container>
