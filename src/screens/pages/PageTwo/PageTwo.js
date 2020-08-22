@@ -37,7 +37,9 @@ const PageTwo = ({ user }) => {
         <Row>
           <Col className="col-12 text-center d-flex justify-content-center mb-5">
             <Col className="bluecolumn col-11 py-4 m-4">
-              {`${user.name} ${user.surname}'s Page`}
+              {user.name &&
+                user.surname &&
+                `${user.name} ${user.surname}'s Page`}
             </Col>
           </Col>
         </Row>
