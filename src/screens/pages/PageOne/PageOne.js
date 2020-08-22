@@ -29,6 +29,55 @@ const PageOne = ({ user }) => {
           </Col>
         </Row>
 
+        <Row className="col-10 justify-content-between">
+          <Col className="bluecolumn col-3 m-4 mt-5 py-2 text-center">
+            Name:
+          </Col>
+          <input
+            className="col-3 mt-5 m-4 py-2 text-center"
+            style={{ backgroundColor: 'gray', border: '2px solid #ffffff' }}
+            value={user.name}
+           />
+          <Col
+            className="col-3 mt-5 m-4 py-2 text-center"
+            style={{ backgroundColor: 'red', border: '2px solid #ffffff' }}
+          >
+            Error
+          </Col>
+        </Row>
+
+        <Row className="col-10 justify-content-between">
+          <Col className="bluecolumn col-3 m-4 mt-5 py-2 text-center">
+            Surname:
+          </Col>
+          <input
+            className="col-3 mt-5 m-4 py-2 text-center"
+            style={{ backgroundColor: 'gray', border: '2px solid #ffffff' }}
+            value={user.surname}
+           />
+          <Col
+            className="col-3 mt-5 m-4 py-2 text-center"
+            style={{ backgroundColor: 'red', border: '2px solid #ffffff' }}
+          >
+            Error
+          </Col>
+        </Row>
+
+        <Row className="col-10 justify-content-between">
+          <Col className="bluecolumn col-3 m-4 mt-5 py-2 text-center">Age:</Col>
+          <input
+            className="col-3 mt-5 m-4 py-2 text-center"
+            style={{ backgroundColor: 'gray', border: '2px solid #ffffff' }}
+            value={user.age}
+           />
+          <Col
+            className="col-3 mt-5 m-4 py-2 text-center"
+            style={{ backgroundColor: 'red', border: '2px solid #ffffff' }}
+          >
+            Error
+          </Col>
+        </Row>
+
         <Row className="row">
           <Col className="col-12 d-flex text-center">
             <Col className="bluecolumn col-11 py-4 m-4">

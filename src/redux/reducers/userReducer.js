@@ -9,7 +9,7 @@ const initialState = {
   user: {
     name: 'Artur',
     surname: 'Shkred',
-    age: null,
+    age: 100,
   },
 };
 //------------
